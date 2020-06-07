@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# Closes and Starts Compton
+  test=$(ps -e | grep "compton")
+  if [[ ${test} == "" ]] ; then
+    compton -b
+  else
+    pkill compton
+  fi
+

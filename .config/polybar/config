@@ -1,0 +1,274 @@
+
+;;;;;;;;;;;;;;;;;;;;;;
+;;; POLYBAR CONFIG ;;;
+;;;;;;;;;;;;;;;;;;;;;;
+
+[colors]
+  background = #1f2f3a
+  background-alt = #1f2f4f
+  foreground = #dfdfdf
+  foreground-alt = #e89eac
+  primary = #EA526F
+  secondary = #4cbab8
+  alert = #bd2c40
+
+[bar/julian]
+  width = 96%
+  height = 25
+  offset-x = 2.3%
+  offset-y = 2.5%
+  radius = 0
+  fixed-center = true
+  background = ${colors.background}
+  foreground = ${colors.foreground}
+  line-size = 2
+  line-color = #f00
+  border-size = 0
+  border-color = #00000000
+  padding-left = 5
+  padding-right = 5
+  module-margin-left = 1
+  module-margin-right = 2
+  font-0 = fixed:pixelsize=9;1
+  font-1 = "Roboto Mono Thin":fontformat=truetype:size=8:antialias=false;0
+  font-2 = FontAwesome:pixelsize=9;0
+; Module and Tray Pos
+  modules-left = date bspwm
+  modules-center = xwindow
+  modules-right = xbacklight protonbridge pulseaudio protonvpn wlan battery
+  tray-position = right
+  tray-padding = 2
+; tray-background = #0063ff
+; override-redirect = true
+; Scroll Between Workspaces 
+  scroll-up = bspwm-desknext
+  scroll-down = bspwm-deskprev
+  cursor-click = pointer
+; cursor-scroll = ns-resize
+
+
+; Custom Modules
+ 
+[module/gcal]
+  type = custom/script
+  exec = /home/ju/.config/polybar/cal/readevent.sh
+  interval = 30
+  label = %output%
+  click-left = exec firefox calendar.google.com &
+
+[module/protonvpn]
+  type = custom/script
+  exec = /home/ju/dotfiles/.bin/env/vpn-protonvpn-status
+  interval = 5
+  label = %output%
+  ; Need to have alias vpn in .bashrc,
+  ; otherwise use 'exec protonvpn X &'
+  click-left = exec vpn r &
+  click-right = exec vpn d &
+
+[module/protonbridge]
+  type = custom/script
+  exec = /home/ju/dotfiles/.bin/env/pmbridge-status
+  interval = 5
+  label = %output%
+
+
+; Regular Modules
+
+; Window (windown name)
+[module/xwindow]
+  type = internal/xwindow
+  label = %title:0:50: ~ %
+
+[module/filesystem]
+  type = internal/fs
+  interval = 25
+  mount-0 = /
+  label-mounted = %{F#0a81f5}%mountpoint%%{F-}: %percentage_used%%
+  label-unmounted = %mountpoint% not mounted
+  label-unmounted-foreground = ${colors.foreground-alt}
+
+[module/bspwm]
+  type = internal/bspwm
+; label-focused = %index%
+  label-focused-background = ${colors.background-alt}
+  label-focused-underline= ${colors.secondary}
+  label-focused-padding = 2
+; label-occupied = %index%
+  label-occupied-padding = 2
+; label-urgent = %index%!
+  label-urgent-background = ${colors.alert}
+  label-urgent-padding = 2
+; label-empty = %index%
+  label-empty-foreground = ${colors.foreground-alt}
+  label-empty-padding = 2
+  pin-workspaces = true
+  inline-mode = false
+  enable-click = false
+  enable-scroll = false
+  reverse-scroll = false
+  fuzzy-match = true
+  ws-icon-0 = 1
+  ws-icon-1 = 2
+  ws-icon-2 = 3
+  ws-icon-3 = 4
+  ws-icon-4 = 5
+  ws-icon-5 = 6
+
+[module/memory]
+  type = internal/memory
+  interval = 2
+  format-prefix = " "
+  format-prefix-foreground = ${colors.foreground-alt}
+  format-underline = #4bffdc
+  label = %percentage_used%%
+
+[module/wlan]
+  type = internal/network
+  interface = wlp3s0
+  interval = 3.0
+  format-connected = <ramp-signal> <label-connected>
+  format-connected-underline = ${colors.secondary}
+; format-connected-underline = #9f78e1
+  label-connected = %essid%
+  format-disconnected = ${colors.secondary}
+; format-disconnected = <label-disconnected>
+; format-disconnected-underline = ${self.format-connected-underline}
+; label-disconnected = %ifname% disconnected
+; label-disconnected-foreground = ${colors.foreground-alt}
+  ramp-signal-0 = 
+  ramp-signal-1 = 
+  ramp-signal-2 = 
+  ramp-signal-3 = 
+  ramp-signal-4 = 
+  ramp-signal-foreground = ${colors.foreground-alt}
+
+[module/eth]
+  type = internal/network
+  interface = wwp0s29u1u4i6
+  interval = 3.0
+  format-connected-underline = #55aa55
+  format-connected-prefix = " "
+  format-connected-prefix-foreground = ${colors.foreground-alt}
+  label-connected = %local_ip%
+  format-disconnected =
+; format-disconnected = <label-disconnected>
+; format-disconnected-underline = ${self.format-connected-underline}
+; label-disconnected = %ifname% disconnected
+; label-disconnected-foreground = ${colors.foreground-alt}
+
+[module/date]
+  type = internal/date
+  interval = 1
+  date =
+  date-alt = "%d-%m-%Y ~ "
+  time = %H:%M
+  time-alt = %H:%M:%S
+  format-prefix = 
+  format-prefix-foreground = ${colors.foreground-alt}
+  format-underline = ${colors.primary}
+  label = %date%%time%
+
+[module/pulseaudio]
+  type = internal/pulseaudio
+  format-volume = <label-volume> 
+  label-volume =   %percentage%%
+  label-volume-foreground = ${root.foreground}
+  label-muted =   X%
+  label-muted-foreground = #999
+
+[module/battery]
+  type = internal/battery
+  battery = BAT0
+  adapter = AC
+  full-at = 95
+  format-charging = <animation-charging> <label-charging>
+  format-charging-underline = #ffb52a
+  format-discharging = <animation-discharging> <label-discharging>
+  format-discharging-underline = ${self.format-charging-underline}
+  format-full-prefix = " "
+; format-full-prefix-foreground = ${colors.foreground-alt}
+; format-full-underline = ${self.format-charging-underline}
+  ramp-capacity-0 = 
+  ramp-capacity-1 = 
+  ramp-capacity-2 = 
+  ramp-capacity-3 = 
+  ramp-capacity-4 = 
+  ramp-capacity-foreground = ${colors.foreground-alt}
+  animation-charging-0 = 
+  animation-charging-1 = 
+  animation-charging-2 = 
+  animation-charging-3 = 
+  animation-charging-4 = 
+  animation-charging-foreground = ${colors.foreground-alt}
+  animation-charging-framerate = 750
+  animation-discharging-0 = 
+  animation-discharging-1 = 
+  animation-discharging-2 = 
+  animation-discharging-foreground = ${colors.foreground-alt}
+  animation-discharging-framerate = 750
+
+[module/powermenu]
+  type = custom/menu
+  expand-right = true
+  format-spacing = 1
+  label-open = 
+  label-open-foreground = ${colors.secondary}
+  label-close =  cancel
+  label-close-foreground = ${colors.secondary}
+  label-separator = |
+  label-separator-foreground = ${colors.foreground-alt}
+  menu-0-0 = reboot
+  menu-0-0-exec = menu-open-1
+  menu-0-1 = power off
+  menu-0-1-exec = menu-open-2
+  menu-1-0 = cancel
+  menu-1-0-exec = menu-open-0
+  menu-1-1 = reboot
+  menu-1-1-exec = sudo reboot
+  menu-2-0 = power off
+  menu-2-0-exec = sudo poweroff
+  menu-2-1 = cancel
+  menu-2-1-exec = menu-open-0
+
+[settings]
+  screenchange-reload = true
+; compositing-background = xor
+; compositing-background = screen
+; compositing-foreground = source
+; compositing-border = over
+; pseudo-transparency = false
+
+[global/wm]
+  margin-top = 0
+  margin-bottom = 0
+
+[module/temperature]
+type = internal/temperature
+
+; Seconds to sleep between updates
+; Default: 1
+interval = 0.5
+
+; Thermal zone to use
+; To list all the zone types, run 
+; $ for i in /sys/class/thermal/thermal_zone*; do echo "$i: $(<$i/type)"; done
+; Default: 0
+thermal-zone = 0
+
+; Full path of temperature sysfs path
+; Use `sensors` to find preferred temperature source, then run
+; $ for i in /sys/class/hwmon/hwmon*/temp*_input; do echo "$(<$(dirname $i)/name): $(cat ${i%_*}_label 2>/dev/null || echo $(basename ${i%_*})) $(readlink -f $i)"; done
+; to find path to desired file
+; Default reverts to thermal zone setting
+hwmon-path = /sys/devices/platform/coretemp.0/hwmon/hwmon2/temp1_input
+
+; Base temperature for where to start the ramp (in degrees celsius)
+; Default: 0
+base-temperature = 20
+
+; Threshold temperature to display warning label (in degrees celsius)
+; Default: 80
+warn-temperature = 60
+
+; vim:ft=dosini
