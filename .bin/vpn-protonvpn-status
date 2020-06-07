@@ -1,0 +1,11 @@
+#!/bin/bash
+
+country=$(protonvpn s | grep "Country" | sed -e 's/Country://g;s/ //g')
+stat=$(protonvpn s | grep "Status" | sed -e "s/Status://g;s/ //g")
+#printf "  $(protonvpn s | grep "Status" | sed -e "s/Status://g;s/ //g;s/Disconnected/down/;s/Connected/${country}/")"
+
+if [[ ${stat} = Connected ]] ; then
+  printf " ${country}"
+else 
+  printf ""
+fi

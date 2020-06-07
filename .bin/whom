@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# Title: 	whom 
+# By: 		OfficialKingJulian
+# Tag Added: 	02/02/2020
+# Description: 	Make the whois command slightly more flexible
+
+  newis=$(echo "${1}" | sed -E "s/(https:\/\/)|(http:\/\/)//g")
+  newis=$(echo "$newis" | sed -E "s/(\/.*)//g")
+  whois "$newis"

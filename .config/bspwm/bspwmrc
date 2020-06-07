@@ -23,7 +23,7 @@ sxhkd &
   bspc rule -a hirimain state=floating
 
 # Run These Please
-  runloc="/home/ju/.config/bspwm/bin/"
+  runloc="/home/ju/.bin"
   # Polybar
     ${runloc}/poly &
   # Polybar Cal Updater

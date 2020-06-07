@@ -1,0 +1,11 @@
+#!/bin/bash 
+
+dlfolder="${HOME}/Downloads/*.pdf"
+libfolder="${HOME}/Documents/library"
+
+for file in ${dlfolder} ; do
+  echo ${file}
+  echo What would you like to rename this file before storing it?
+  read newfile
+  mv "${file}" "${libfolder}/${newfile}"
+done

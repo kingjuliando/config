@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# Closes and Starts Polybar
+  pkill polybar
+  polybar julian

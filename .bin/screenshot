@@ -1,0 +1,9 @@
+#!/bin/bash
+
+# Define Name
+name=${1}
+if [[ name = "" ]] ; then name="test" ; fi
+
+# Capture
+scrot ${HOME}/%Y-%m-%d-${name}.jpg -e $(notify-send "Screenshot Captured" "%Y-%m-%d-$name")  
+

@@ -1,0 +1,6 @@
+#!/bin/bash
+
+while true ; do
+  feh --randomize --bg-fill ${HOME}/Pictures/wallpapers/* 
+  sleep 420 
+done

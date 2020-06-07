@@ -1,0 +1,74 @@
+/*
+ *
+ * My basic rofi theme
+ *
+ */
+
+configuration {
+/* Location, top left */
+    location: 1;
+/* Offset so under Polybar */
+  	yoffset: 44; 
+  	xoffset: 31; 
+
+/* Scrollbar */
+  	hide-scrollbar: true;
+
+/* Modies */
+  	/*modi: "run,window,ssh,drun"; 
+     *  Removed because I don't use
+     *  other features really. */
+    modi: "drun,run";
+    width: 25;
+  	lines: 5;
+    font: "RobotoMono-Light 9";
+
+/* Icons */
+  	show-icons: true;
+  	icon-theme: "Papirus-Dark";
+
+/* Sorting etc. */
+  	drun-match-fields: "name,generic,exec,categories";
+  	drun-display-format: "  <span color='#4cbab8'>{name}</span> [<span color='#e89eac' weight='light' size='small'><i> ~ {generic}</i></span>]";
+  	sort: true;
+  	cycle: true;
+
+/* Margins */
+  	line-margin: 15;
+    line-padding: 20;
+    fake-transparency: false;
+
+}
+
+/* Styles */
+* {
+  background-color: #1f2f3a;
+	text-color: #d3d7cf;
+	selbg: #215d9c;
+	actbg: #262626;
+	urgbg: #e53935;
+	winbg: #26c6da;
+  font: "RobotoMono-Light 9";
+
+	selected-normal-foreground:  @winbg;
+	normal-foreground:           @text-color;
+	selected-normal-background:  @actbg;
+	normal-background:           @background-color;
+	selected-urgent-foreground:  @background-color;
+	urgent-foreground:           @text-color;
+	selected-urgent-background:  @urgbg;
+	urgent-background:           @background-color;
+	selected-active-foreground:  @winbg;
+	active-foreground:           @text-color;
+	selected-active-background:  @actbg;
+	active-background:           @selbg;
+
+	line-margin:                 0;
+	line-padding:                20;
+	separator-style:             "none";
+	hide-scrollbar:              "true";
+	margin:                      0;
+	padding:                     4;
+}
+
+/* vim:ft=cs

@@ -1,0 +1,15 @@
+#!/bin/bash
+
+
+while true ; do
+  bat=$(upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep "percentage" | sed -e 's/ //g;s/percentage://g;s/\%//g')
+  prevbat=$(cat /home/julian/.config/bspwm/bin/currbat)
+
+  if [[ ${bat} != ${prevbat} ]] && [[ ${bat} < 10 ]] ; then
+    notify-send "Battery Alert!" "Battery is ${bat}%"
+  fi
+
+  echo ${bat}>/home/julian/.config/bspwm/bin/currbat
+  sleep 30
+done
+
