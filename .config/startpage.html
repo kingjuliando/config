@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+  <head>
+     <title>
+        Julian's Start Page
+      </title>
+      <style>
+        body {
+          margin: 0;
+          padding: 0;
+          border: 0;
+          font-family: monospace;
+        }
+        div.outer {
+          background-color: #0b091f;
+          width: 100%;
+          height: 100vh;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          position: absolute;
+        }
+        div.inner {
+          background-color: #000;
+        }
+        ul {
+          margin: 0;
+          padding: 10px 15px;
+          list-style-type: none;
+          font-size: 14px;
+        }
+        li {
+          padding: 5px 0px;
+        }
+        li>span {
+          font-style: italic;
+          font-size: 12px;
+          color: #d9d9d9;
+        }
+      </style>
+  </head>
+
+  <!-- Bodus -->
+  <body>
+    <div class="outer">
+      <div class="inner">
+        <ul>
+          <li>
+            <span>(g)</span> GitHub
+          </li>
+          <li>
+            <span>(c)</span> Google Calendar
+          </li>
+          <li>
+            <span>(t)</span> Twitter
+          </li>
+          <li>
+            <span>(T)</span> Trello
+          </li>
+          <li>
+            <span>(t)</span> Twitter
+          </li>
+          <li>
+            <span>(o)</span> Outlook
+          </li>
+          <li>
+            <span>(G)</span> /g/
+          </li>
+          <li>
+            <span>(p)</span> /wg/
+          </li>
+          <li>
+            <span>(u)</span> /r/UnixPorn
+          </li>
+        </ul>
+      </div>
+    </div>
+
+  <!-- JS, for Keybinding! -->
+    <script type="text/javascript">
+      // Shift + Letter Shortcuts
+        document.addEventListener("keypress", function(event) {
+          if (event.key == 'g') { window.open('https://github.com')}
+          if (event.key == 'c') { window.open('https://calendar.google.com')}
+          if (event.key == 't') { window.open('https://twitter.com')}
+          if (event.key == 'T') { window.open('https://trello.com')} 
+          if (event.key == 'o') { window.open('https://login.live.com/') }
+          if (event.key == 'G') { window.open('https://boards.4channel.org/g') } // /g/
+          if (event.key == 'p') { window.open('https://boards.4channel.org/wg') } // /wg/ (p==papes)
+          if (event.key == 'u') { window.open('https://www.reddit.com/r/UnixPorn')} // /r/UnixPorn
+        });
+    </script>
+  </body>
+</html>
