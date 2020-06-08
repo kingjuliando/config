@@ -23,7 +23,7 @@ function weatherBallon(cityID) {
     // catch any errors
   });
 }
-function drawWeather( d ) {
+function drawWeather(d) {
   var celcius = Math.round(parseFloat(d.main.temp)-273.15);
   var description = d.weather[0].description;
   document.getElementById('description').innerHTML = description;
@@ -40,25 +40,25 @@ function drawWeather( d ) {
   }
 }
 window.onload = function() {
-  weatherBallon( 2639189);
+  weatherBallon(2639189);
 }
 
 // Time for greeting
 var d = new Date();
-var t = d.getTime();
+var t = d.getHours();
+console.log(t);
 var greeting = document.getElementById("greeter");
-if (t > 499) {
+if (t < 6) {
   greeting.innerHTML = "It's the early hours.";
-} else if (t < 500 && t > 1259) {
+} else if (t > 7 && t <= 12) {
   greeting.innerHTML = "Good morning.";
-} else if (t < 1300 && t > 1799) {
+} else if (t > 1 && t <= 5) {
   greeting.innerHTML = "Good afternoon.";
-} else if (t < 1600 && t > 2099) {
+} else if (t > 6 && t <= 8) {
   greeting.innerHTML = "Good evening.";
-} else if (t < 2100 && t > 2399) {
+} else if (t > 9 && t <= 23) {
   greeting.innerHTML = "It's night time";
 } else {
-  greeting.innerHTML = "Hello there";
+  greeting.innerHTML = "Hello there.";
 }
-
 
