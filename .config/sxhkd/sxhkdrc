@@ -24,7 +24,7 @@ alt + q
 
 # Locker
 super + l
-	i3lock-fancy -p -t "Battery $(battery)" -f size=5 
+	i3lock-fancy -p -t "$(pacman -Qu | wc -l) Package Updates" -f size=5 
 
 # Brightness
 {_,ctrl + }XF86MonBrightness{Down,Up}
