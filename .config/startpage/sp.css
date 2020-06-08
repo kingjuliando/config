@@ -30,7 +30,7 @@
   li {
     transform: translateX(2px);
   }
-  li span {
+  li span, span.special {
     font-style: italic;
     font-size: 12px;
     color: #b37b89 !important;

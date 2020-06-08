@@ -1,13 +1,13 @@
 // Shift + Letter Shortcuts
   document.addEventListener("keypress", function(event) {
-    if (event.key == 'g') { window.open('https://github.com')}
-    if (event.key == 'c') { window.open('https://calendar.google.com')}
-    if (event.key == 't') { window.open('https://twitter.com')}
-    if (event.key == 'T') { window.open('https://trello.com')} 
-    if (event.key == 'o') { window.open('https://login.live.com/') }
-    if (event.key == 'G') { window.open('https://boards.4channel.org/g') } // /g/
-    if (event.key == 'p') { window.open('https://boards.4channel.org/wg') } // /wg/ (p==papes)
-    if (event.key == 'u') { window.open('https://www.reddit.com/r/UnixPorn')} // /r/UnixPorn
+    if (event.key == 'g') { window.open('https://github.com','_self')}
+    if (event.key == 'c') { window.open('https://calendar.google.com','_self')}
+    if (event.key == 't') { window.open('https://twitter.com','_self')}
+    if (event.key == 'T') { window.open('https://trello.com','_self')} 
+    if (event.key == 'o') { window.open('https://login.live.com/','_self') }
+    if (event.key == 'G') { window.open('https://boards.4channel.org/g','_self') } // /g/
+    if (event.key == 'p') { window.open('https://boards.4channel.org/wg','_self') } // /wg/ (p==papes)
+    if (event.key == 'u') { window.open('https://www.reddit.com/r/UnixPorn','_self')} // /r/UnixPorn
   });
 
 
