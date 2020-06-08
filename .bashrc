@@ -46,10 +46,11 @@
   export PATH="$PATH:/home/ju/Utils/path"
   export PATH="$PATH:/home/ju/Utils/git"
   export PATH="$PATH:/home/ju/Utils/mutt"
+  export PATH="$PATH:/home/ju/Utils/fun"
   export PATH="$PATH:/home/ju/dotfiles"
   export PATH="$PATH:/home/ju/.config/bspwm/bin"
   export PATH="$PATH:/home/ju/Utils/git"
-  export PATH="$PATH:/home/ju/dotfiles/.bin/env"
+  export PATH="$PATH:/home/ju/.bin"
   export PATH="$PATH:/home/ju/Utils/misc"
 # Home DIR Clean
   export CARGO_HOME="$XDG_DATA_HOME"/cargo
@@ -69,16 +70,7 @@
   export XINITRC="$XDG_CONFIG_HOME"/X11/xinitrc 
 
 # Always Neofetch
-  neofetch --ascii_distro arch_small \
-           --disable gpu \
-                     cpu \
-                     memory \
-                     icons \
-                     theme \
-                     resolution \
-                     kernel \
-                     packages \
-                     term
+  neofetch 
 
 # Start Graphical Environment
  if systemctl -q is-active graphical.target && [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then
