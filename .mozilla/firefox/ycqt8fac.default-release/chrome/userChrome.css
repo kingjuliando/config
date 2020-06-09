@@ -1,0 +1,49 @@
+/*
+ * Mainly built from UserChrome-Tweaks https://github.com/Timvde/UserChrome-Tweaks, with the following parts;
+  * Auto-hide the URL-bar show on hover or focus
+  * Only show close buttons on background tabs when hovering with the mouse
+  * Only show close buttons on background tabs when hovering with the mouse
+  * Style your tabs similar to Googles "Material Design" guidelines.
+ * Credit to Timvde, Madis0
+ */
+
+* {
+  font-family: Roboto-Mono, monospace;
+  font-size: 12px;
+}
+#nav-bar:not([customizing="true"]):not([inFullscreen]) {
+	min-height: 1px !important;
+	max-height: 0px !important;
+	margin-top: 1px !important;
+	margin-bottom: -1px !important;
+	transition: all 50ms linear 0s !important;
+	z-index: -5 !important;
+}
+#navigator-toolbox:hover:not([inFullscreen]) :-moz-any(#nav-bar),
+#navigator-toolbox:focus-within :-moz-any(#nav-bar) {
+	min-height: 32px !important;
+	max-height: 32px !important;
+	margin-top: 1px !important;
+	margin-bottom: -32px !important;
+	transition: all 50ms linear 0s !important;
+	z-index: 5 !important;
+}
+#urlbar {
+	--urlbar-toolbar-height: 32px !important;
+}
+.tabbrowser-tab:not([selected]):not([pinned]) .tab-close-button {
+  display: none !important;
+}
+.tabbrowser-tab:not([selected]):not([pinned]):hover .tab-close-button {
+  display: -moz-box !important;
+}
+.tabbrowser-tab[visuallyselected="true"] {
+  color: inherit !important; /* Use background tab text color for foreground tabs */
+}
+.tab-line {
+  -moz-box-ordinal-group: 2; /* Move the line to the bottom */
+}
+.tab-line[selected=true] {
+  background-color: white !important; /* Make the line white, remove this for default color */
+}
+
