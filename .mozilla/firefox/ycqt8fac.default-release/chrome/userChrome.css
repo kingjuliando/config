@@ -43,7 +43,3 @@
 .tab-line {
   -moz-box-ordinal-group: 2; /* Move the line to the bottom */
 }
-.tab-line[selected=true] {
-  background-color: white !important; /* Make the line white, remove this for default color */
-}
-
