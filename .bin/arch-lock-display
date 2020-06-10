@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# Title:	arch-lock-display
+# By: 		kingjuliando
+# Tag Added:	10-06-2020
+# Description:  Returns number of pacman packages that need updating
+
+[[ $(pacman -Qu) ]] && pacs=$(pacman -Qu | wc -l) || pacs="e"
+
+case ${pacs} in
+  e) echo "Error, please check sudoers file."
+  ;;
+  0) echo "No Packages To Update"
+  ;;
+  *) echo "${pacs} Package Updates"
+  ;;
+esac

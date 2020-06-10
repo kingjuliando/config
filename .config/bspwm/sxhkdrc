@@ -1,0 +1,105 @@
+
+
+
+#--------------------#
+#    bspwm config    #
+#--------------------#
+
+
+# -- General -- #
+
+# Reload sxhkd and bspwm config
+alt + shift + r
+	/home/ju/.bin/wmreload
+
+# Workspaces
+alt + {_,shift + }{1-9,0}
+	bspc {desktop -f,node -d} ^{1-9,10}
+
+# Colour Reminder
+alt + c
+  notify-send "Colour Reminder" \
+  "#EA526F - Dark Pink\n#4CBAB8 - Turquoise\n#1F2F3A - Gunmetal\n#C1C1C1 - Grey\n#FFFFFF - Darkest Grey"
+
+
+
+#-------------------#
+#   Running Apps    #
+#-------------------#
+
+# Rofi
+super + Return
+	/usr/bin/rofi -show drun
+
+# Terminal
+alt + Return 
+	/usr/bin/urxvt
+
+# i3lock (fancy)
+super + l
+	i3lock-fancy -p -t "$(/home/ju/.bin/arch-lock-display)" -f size=5 
+
+# Quit Current Window
+alt + q
+	bspc node --close
+
+
+
+#---------------------#
+# Window Manipulation #
+#---------------------#
+
+  # General rule / concept ;
+  #   Alt       + x =   tiled    manipulation
+  #   Alt + sup + x =   floating manipulation
+
+
+# -- Tiled -- #
+
+# Cycle Window Gaps
+alt + shift + space
+	bspc config window_gap {0,30,45}
+
+# Move Between Tiled Windows
+alt + {h,j,k,l}
+	bspc node -f {west,south,north,east}
+
+# Expand Riled space
+super + alt + {h,j,k,l}
+	bspc node {@west -r -10,@south -r +10,@north -r -10,@east -r +10}
+
+
+# -- Floating -- #
+
+# Toggle Floating State
+alt + super + space
+	bspc node focused -t \~floating
+
+# Move Floating Window
+alt + super + ctrl + {h,j,k,l}
+	bspc node -v {-20 0,0 20,0 -20,20 0}
+
+# Resize Floating Window
+alt + super + shift + {h,l,k,j}
+  xdo resize {-w -50,-w +50,-h -50,-h +50}
+
+
+
+#----------------------#
+#    XF86 Key Binds    #
+#----------------------#
+
+# Brightness
+{_,ctrl + }XF86MonBrightness{Down,Up}
+	light {-U 10,\
+         -U 2,\
+         -A 10,\
+         -A 2}
+
+# Audio Volume Toggle Mute
+XF86AudioMute
+	amixer sset Master toggle && /home/ju/.bin/vol
+
+# Audio Volume Raise Lower
+XF86Audio{Raise,Lower}Volume
+	amixer sset Master 5%{+,-} && /home/ju/.bin/vol
