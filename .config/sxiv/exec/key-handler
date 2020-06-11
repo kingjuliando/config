@@ -1,0 +1,71 @@
+#!/bin/bash
+
+# Title:	key-handler
+# By: 		kingjuliando
+# Tag Added:	11-06-2020
+# Description:  Handle key input functions for sxiv
+
+while read file; do
+  case "$1" in
+
+# Set Wallpaper
+    "w") nitrogen -save --set-zoom-fill "$file" & 
+      ;;
+
+# Copy
+    "c")
+    [ -z "$destdir" ] && destdir="$(sed "s/\s.*#.*$//;/^\s*$/d" ~/.config/directories | awk '{print $2}' | dmenu -l 20 -i -p "Copy file(s) to where?" | sed "s|~|$HOME|g")"
+    [ -z "$destdir" ] && exit
+    cp "$file" "$destdir" && notify-send -i "$(readlink -f "$file")" "$file copied to $destdir." &
+      ;;
+
+# Move
+    "m")
+    [ -z "$destdir" ] && destdir="$(sed "s/\s.*#.*$//;/^\s*$/d" ~/.config/directories | awk '{print $2}' | dmenu -l 20 -i -p "Move file(s) to where?" | sed "s|~|$HOME|g")"
+    [ -z "$destdir" ] && exit
+    mv "$file" "$destdir" && notify-send -i "$(readlink -f "$file")" "$file moved to $destdir." &
+      ;;
+
+# Rotate +90
+    "r")
+    convert -rotate 90 "$file" "$file"
+      ;;
+
+# Rotate -90
+    "R")
+    convert -rotate -90 "$file" "$file"
+      ;;
+
+# Flip Image
+    "f")
+    convert -flop "$file" "$file"
+      ;;
+
+# Yank
+    "y")
+    echo -n "$file" | xclip -selection clipboard &&
+    notify-send "$file copied to clipboard" & 
+      ;;
+
+# Yank
+    "Y")
+    readlink -f "$file" | xclip -selection clipboard &&
+    notify-send "$(readlink -f "$file") copied to clipboard" &
+      ;;
+
+# Delet
+    "d")
+    [ "$(printf "No\\nYes" | dmenu -i -p "Really delete $file?")" = "Yes" ] && rm "$file" && notify-send "$file deleted." 
+      ;;
+
+# Open with Gimp
+    "g")	ifinstalled gimp && gimp "$file" & 
+      ;;
+
+# Minify
+    "j")
+    [[ $(file -b "${file}") =~ JPEG ]] && convert -strip -interlace Plane -gaussian-blur 0.05 -quality 85% $file $file-min.jpg || echo "Error, file isn't a jpg."
+      ;;
+
+  esac
+done

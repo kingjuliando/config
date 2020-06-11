@@ -1,6 +1,6 @@
 #!/bin/sh
 
-sxhkd &
+sxhkd -c "/home/ju/.config/bspwm/sxhkdrc" &
 
 # General
   bspc monitor -d      
@@ -15,12 +15,8 @@ sxhkd &
   bspc config normal_border_color \#4CBAB800
 
 # Window Rules
-# bspc rule -a Gimp desktop='^8' state=floating follow=on
-  bspc rule -a Firefox desktop='^2'
-# bspc rule -a mplayer2 state=floating
-# bspc rule -a Kupfer.py focus=on
-# bspc rule -a Screenkey manage=off
-  bspc rule -a hirimain state=floating
+  bspc rule --add Firefox desktop='' follow=on
+  bspc rule --add Sxiv state=floating
 
 # Run These Please
   runloc="/home/ju/.bin"
@@ -32,8 +28,7 @@ sxhkd &
   # Compton
     picom -b &
   # Background
-    pkill bg &
-    ${runloc}/bg &
+    nitrogen --save --set-zoom-fill /home/ju/Pictures/wallpapers/wave1.jpg
   # Protonmail Bridge
 #   screen -dmS protonmailbridge.start /usr/bin/protonmail-bridge -c &
   # Battery Notification Tool
