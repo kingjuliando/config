@@ -58,7 +58,7 @@
 
 [module/protonvpn]
   type = custom/script
-  exec = /home/ju/dotfiles/.bin/env/vpn-protonvpn-status
+  exec = /home/ju/.bin/vpn-protonvpn-status
   interval = 5
   label = %output%
   ; Need to have alias vpn in .bashrc,
@@ -68,7 +68,7 @@
 
 [module/protonbridge]
   type = custom/script
-  exec = /home/ju/dotfiles/.bin/env/pmbridge-status
+  exec = /home/ju/.bin/pmbridge-status
   interval = 5
   label = %output%
 

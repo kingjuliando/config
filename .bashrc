@@ -15,13 +15,14 @@
   export FILE="ranger"
 # Aliases
   alias config='/usr/bin/git --git-dir=/home/ju/.cfg/ --work-tree=/home/ju'
-  alias ls='ls --color=auto'
+  alias ls='ls --color=tty'
   alias ll='ls -l'
   alias la='ls -la'
   alias cls='clear'
   alias md="mkdir -p"
   alias vpn="sudo protonvpn"
   alias r="ranger"
+  alias sxiv="/home/ju/.bin/sxiv.sh"
   alias z="zathura"
   alias free="free -h"
   alias lights="hue lights"
@@ -59,7 +60,7 @@
   export NPM_PACKAGES="$XDG_CONFIG_HOME/npm-packages"
   export NODE_PATH="$NPM_PACKAGES/lib/node_modules:$NODE_PATH"
   export PATH="$NPM_PACKAGES/bin:$PATH"
-  export MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
+# export MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
   export NODE_REPL_HISTORY="$XDG_DATA_HOME"/node_repl_history
   export VIMINIT="source ~/.vim/vimrc"
   export NOTMUCH_CONFIG="$XDG_CONFIG_HOME"/notmuch/notmuchrc

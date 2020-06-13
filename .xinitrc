@@ -12,7 +12,7 @@ systemctl --user set-environment DISPLAY=:0
 setxkbmap -layout gb
 
 # Restart 'Wal'
-wal -R
+#wal -R
 
 # Exec WM 
 #exec i3

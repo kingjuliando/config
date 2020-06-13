@@ -5,12 +5,18 @@
 # Tag Added:	10-06-2020
 # Description:  Returns number of pacman packages that need updating
 
-[[ $(pacman -Qu) ]] && pacs=$(pacman -Qu | wc -l) || pacs="e"
+# Get Packages, or Error
+[[ $(pacman -Qu | grep 'error') ]] && pacs="e" || pacs=$(pacman -Qu | wc -l)
+
+# Check Internet Connection
+ping -q -w1 -c1 google.com &>/dev/null && echo s &>/dev/null || pacs="i"
 
 case ${pacs} in
   e) echo "Error, please check sudoers file."
   ;;
   0) echo "No Packages To Update"
+  ;;
+  i) echo "Unknown Updates; No Internet"
   ;;
   *) echo "${pacs} Package Updates"
   ;;

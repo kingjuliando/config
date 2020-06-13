@@ -1,3 +1,0 @@
-#!/bin/bash
-
-  feh --bg-fill ${HOME}/Pictures/wallpapers/wave1.jpg

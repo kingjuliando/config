@@ -55,7 +55,7 @@ while read file; do
 
 # Delet
     "d")
-    [ "$(printf "No\\nYes" | dmenu -i -p "Really delete $file?")" = "Yes" ] && rm "$file" && notify-send "$file deleted." 
+    [ "$(printf "Yes\\nNo" | rofi -dmenu -i -mesg "Really delete $file?")" = "Yes" ] && rm "$file" && notify-send "$file deleted." 
       ;;
 
 # Open with Gimp

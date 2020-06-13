@@ -21,6 +21,21 @@ alt + c
   notify-send "Colour Reminder" \
   "#EA526F - Dark Pink\n#4CBAB8 - Turquoise\n#1F2F3A - Gunmetal\n#C1C1C1 - Grey\n#FFFFFF - Darkest Grey"
 
+# Snipping Tool Screenshot
+Print
+  scrot -s '%Y-%m-%d_%H:%M.png' -e 'mv $f ~/Pictures/captures/.' && \
+  notify-send "Screenshot Captured" "Saved to ~/Pictures/captures/$f"
+
+# Screenshot Full Viewport
+alt + Print
+  scrot -z '%Y-%m-%d_%H:%M.png' -e 'mv $f ~/Pictures/captures/.' && \
+  notify-send "Screenshot Captured" "Saved to ~/Pictures/captures/$f"
+
+# Screenshot Current Window
+alt + super + Print
+  scrot -u -z '%Y-%m-%d_%H:%M.png' -e 'mv $f ~/Pictures/captures/.' && \
+  notify-send "Screenshot Captured" "Saved to ~/Pictures/captures/$f"
+ 
 
 
 #-------------------#
@@ -33,7 +48,7 @@ super + Return
 
 # Terminal
 alt + Return 
-	/usr/bin/urxvt
+	/usr/bin/termite
 
 # i3lock (fancy)
 super + l
@@ -64,9 +79,23 @@ alt + shift + space
 alt + {h,j,k,l}
 	bspc node -f {west,south,north,east}
 
-# Expand Riled space
-super + alt + {h,j,k,l}
-	bspc node {@west -r -10,@south -r +10,@north -r -10,@east -r +10}
+# Expand Tiled Window
+# NEEDS IMPROVEMENT
+alt + shift + {h, l, k, j}
+ 	bspc node {@west -r -10 && @east -r +10,\
+             @west -r +10 && @east -r -10,\
+             @north -r -10 && @south -r +10,\
+             @north -r +10 && @south -r -10}
+
+# Make Current Window Biggest
+alt + b
+	bspc node -s biggest.local && bspc node -d
+
+# Make Current Window Smallest
+alt + s
+	bspc node -s smallest.local && bspc node -d
+
+ 
 
 
 # -- Floating -- #
