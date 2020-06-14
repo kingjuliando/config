@@ -14,6 +14,9 @@ setxkbmap -layout gb
 # Restart 'Wal'
 #wal -R
 
+# XRDB
+xrdb -merge $HOME/.Xresources
+
 # Exec WM 
 #exec i3
 exec bspwm
