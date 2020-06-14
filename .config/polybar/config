@@ -30,7 +30,7 @@
   module-margin-left = 1
   module-margin-right = 2
   font-0 = fixed:pixelsize=9;1
-  font-1 = "Roboto Mono Thin":fontformat=truetype:size=8:antialias=false;0
+  font-1 = "RobotoMonoLight":fontformat=truetype:size=8:antialias=false;0
   font-2 = FontAwesome:pixelsize=9;0
 ; Module and Tray Pos
   modules-left = date bspwm

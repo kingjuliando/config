@@ -13,6 +13,8 @@ URxvt*borderColor: [100]#141e27
 Sxiv.foreground: #f1e9d1
 Sxiv.background: #141e27
 Sxiv.font: Roboto-Mono:size=9
+! Rofi
+rofi.font: RobotoMono-Light 8
 
 ! Colors 0-15.
 *.color0: #141e27
