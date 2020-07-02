@@ -1,6 +1,8 @@
 #!/bin/sh
 
+
 sxhkd -c "/home/ju/.config/bspwm/sxhkdrc" &
+
 
 # General
   bspc monitor -d      
@@ -10,27 +12,38 @@ sxhkd -c "/home/ju/.config/bspwm/sxhkdrc" &
   bspc config borderless_monocle   true
   bspc config gapless_monocle      true
 
+
 # Borders
   bspc config active_border_color \#EA526F
   bspc config normal_border_color \#4CBAB800
+
 
 # Window Rules
   bspc rule --add Firefox desktop='' follow=on
   bspc rule --add Sxiv state=floating
 
-# Run These Please
+
+# Run These, Please
   runloc="/home/ju/.bin"
-  # Polybar
-    ${runloc}/poly &
-  # Polybar Cal Updater
-#   pkill gcbr &
-#   ${runloc}/gcbr &
-  # Compton
+
+  # Polybar Status Bar
+#    ${runloc}/poly &
+    bspc config top_padding 0
+
+  # Picom Compositor
     picom -b &
-  # Background
-    nitrogen --save --set-zoom-fill /home/ju/Pictures/wallpapers/wave1.jpg
-  # Protonmail Bridge
-#   screen -dmS protonmailbridge.start /usr/bin/protonmail-bridge -c &
-  # Battery Notification Tool
-    pkill bat
-    ${runloc}/bat
+
+  # Set Background
+    nitrogen --save --set-zoom-fill /home/ju/Pictures/wallpapers/wave1.jpg &
+
+  # Protonmail Bridge; Daemonize in a Screen
+    screen -dmS protonmailbridge.start /usr/bin/protonmail-bridge -c &
+
+  # Battery Notification Warning
+    pkill bat-notify &
+    ${runloc}/bat-notify &
+
+  # Polybar Cal Updater
+    #pkill gcbr &
+    #${runloc}/gcbr &
+

@@ -14,7 +14,7 @@ alt + shift + r
 
 # Workspaces
 alt + {_,shift + }{1-9,0}
-	bspc {desktop -f,node -d} ^{1-9,10}
+   bspc {desktop -f,node -d} ^{1-9,10} && dunstify -a "change-window" -u low -r "1" "$(bspc query -D -d focused --names)" 
 
 # Colour Reminder
 alt + c
@@ -35,6 +35,12 @@ alt + Print
 alt + super + Print
   scrot -u -z '%Y-%m-%d_%H:%M.png' -e 'mv $f ~/Pictures/captures/.' && \
   notify-send "Screenshot Captured" "Saved to ~/Pictures/captures/$f"
+
+# Floating Window
+alt + s
+  bspc node -t floating; \
+  bspc node -g sticky -t
+
  
 
 
