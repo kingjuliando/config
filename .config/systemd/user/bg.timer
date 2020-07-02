@@ -1,0 +1,10 @@
+[Unit]
+Description=Change the background
+
+[Timer]
+OnUnitActiveSec=10s
+OnBootSec=10s
+Unit=bg.service
+
+[Install]
+WantedBy=timers.target

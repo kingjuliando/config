@@ -1,0 +1,6 @@
+[Unit]
+Description=Change the background
+
+[Service]
+Type=oneshot
+ExecStart=/home/ju/.bin/batground.sh wave1.jpg
